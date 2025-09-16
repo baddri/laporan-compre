@@ -1,0 +1,11 @@
+.aux
+.cb
+.cb2
+.fdb_latexmk
+.fls
+.idx
+.log
+.out
+.synctex
+.synctex(busy)
+.toc
