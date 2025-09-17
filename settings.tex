@@ -1,0 +1,66 @@
+% Image package
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\usepackage[indonesian, english]{babel}
+\addto\captionsindonesian{
+  \renewcommand{\bibname}{Daftar Pustaka}
+}
+
+% Page settings
+\usepackage[
+  a4paper,
+  top=3cm,
+  bottom=3cm,
+  right=3cm,
+  left=4cm
+]{geometry}
+\usepackage{setspace}
+\setstretch{1.15}
+
+% Footer and headers
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% --- MAINMATTER style: arabic numbers top-right ---
+\fancypagestyle{mainstyle}{%
+  \fancyhf{}
+  \fancyhead[R]{\thepage}
+}
+
+% --- FRONTMATTER style: roman numbers bottom-right ---
+\fancypagestyle{frontstyle}{%
+  \fancyhf{}
+  \fancyfoot[R]{\thepage}
+}
+
+% Enable link references
+\usepackage[hidelinks]{hyperref}
+
+% Include frontmatter chapter to toc
+\usepackage[nottoc]{tocbibind}
+
+% Make the chapter number in roman
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}
+{BAB \Roman{chapter}}{1em}{}
+
+% Bubliography style
+% \usepackage[style=authoryear, language=indonesian, backend=biber]{biblatex}
+% \addbibresource{references.bib}
+
+% Make table and caption have some space
+\usepackage{caption}
+\captionsetup[table]{skip=10pt}
+
+% make table have some padding
+\renewcommand{\arraystretch}{1.5}
+\setlength{\tabcolsep}{10pt}
+
+% Keyword command
+\newcommand{\keywords}[1]{
+  \vspace{1.5\baselineskip}
+  \noindent\textbf{Keywords:} #1
+}

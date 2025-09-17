@@ -1,0 +1,47 @@
+\documentclass[12pt, a4paper, oneside]{book}
+
+\input{settings.tex}
+
+\begin{document}
+
+\frontmatter
+\title{Laporan}
+\author{Baddri Yatul Ula \thanks{terimakasih kepada Fungsi PAS}}
+\date{August 2025}
+
+\maketitle
+
+\pagenumbering{roman}
+\pagestyle{frontstyle}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[R]{\thepage}
+}
+
+\input{structure/presentasi.tex}
+\input{structure/abstract.tex}
+\input{structure/kata-pengantar.tex}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter
+\pagenumbering{arabic}
+\pagestyle{mainstyle}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyhead[R]{\thepage}
+}
+
+\input{structure/bab1.tex}
+\input{structure/bab2.tex}
+\input{structure/bab3.tex}
+\input{structure/bab4.tex}
+\input{structure/bab5.tex}
+
+\backmatter
+\bibliographystyle{alpha}
+\bibliography{references}
+
+\end{document}

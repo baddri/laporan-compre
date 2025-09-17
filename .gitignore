@@ -1,11 +1,31 @@
-.aux
-.cb
-.cb2
-.fdb_latexmk
-.fls
-.idx
-.log
-.out
-.synctex
-.synctex(busy)
-.toc
+# Auxiliary files generated during compilation
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.brf
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.toc
+*.run.xml
+*.upa
+
+# Editor and backup files
+*~
+*.bak
+.vscode/
+
+# Ignore the compiled PDF file, but keep a final copy if desired
+# Comment out the line below to track the PDF file
+*.pdf
+
+# Only if you are sure they are generated, not source files
+*.dvi
+*.ps
