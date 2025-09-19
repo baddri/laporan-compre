@@ -1,8 +1,10 @@
 % Image package
 \usepackage{graphicx}
 \usepackage{booktabs}
+\usepackage{enumerate}
+\usepackage{changepage}
 
-\usepackage[indonesian, english]{babel}
+\usepackage[indonesian]{babel}
 \addto\captionsindonesian{
   \renewcommand{\bibname}{Daftar Pustaka}
 }
@@ -48,12 +50,22 @@
 {BAB \Roman{chapter}}{1em}{}
 
 % Bubliography style
-% \usepackage[style=authoryear, language=indonesian, backend=biber]{biblatex}
+% \usepackage[style=authoryear, backend=biber]{biblatex}
+% \DeclareLanguageMapping{indonesian}{english}
 % \addbibresource{references.bib}
 
 % Make table and caption have some space
 \usepackage{caption}
 \captionsetup[table]{skip=10pt}
+
+% Graphic library
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, text width=4cm, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
 
 % make table have some padding
 \renewcommand{\arraystretch}{1.5}

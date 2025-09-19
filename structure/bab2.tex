@@ -1,4 +1,30 @@
 \chapter{Tinjauan Pustaka}
 \section{Kajian Teori}
+
+\subsection{IT Governance}
+Tata kelola teknologi informasi (IT Governance) berperan penting dalam memastikan bahwa TI mendukung pencapaian tujuan organisasi sekaligus mengelola risiko dan sumber daya dengan baik. Literatur seperti COBIT menekankan bahwa tata kelola TI berorientasi pada penciptaan nilai bisnis, pengelolaan risiko, serta optimalisasi penggunaan sumber daya \cite{isaca2012cobit5} \cite{itgi2007cobit41}. Penelitian sebelumnya juga menunjukkan bahwa penerapan prinsip tata kelola TI secara umum dapat membantu organisasi meningkatkan kinerja layanan dan kepatuhan terhadap standar yang berlaku \cite{catersteel2005itgov}.
+
+\subsection{Openshift Platform}
+OpenShift merupakan platform orkestrasi kontainer berbasis Kubernetes yang mendukung pengelolaan aplikasi secara aman, skalabel, dan berorientasi enterprise. Dokumentasi resmi Red Hat menegaskan bahwa OpenShift menyediakan integrasi CI/CD, pengamanan tingkat enterprise, serta pengalaman pengembang yang terpadu \cite{redhat2022openshift}. Kubernetes sendiri telah berkembang menjadi infrastruktur fundamental untuk aplikasi modern, sebagaimana dipaparkan oleh Burns dkk. \cite{burns2021kubernetes}. Sejalan dengan itu, studi sistematis menunjukkan bahwa aplikasi cloud-native kini menjadi standar industri untuk mendukung fleksibilitas dan keberlanjutan layanan digital \cite{kratzke2017cloudnative}.
+
+\subsection{Red Hat ACM, Automated Policy Enforcement dan Policy as Code}
+Red Hat Advanced Cluster Management (ACM) merupakan solusi pengelolaan multi-cluster Kubernetes yang memungkinkan konsistensi konfigurasi, policy enforcement, serta pemantauan terpusat \cite{redhat2023acm}. Salah satu pendekatan yang relevan adalah Policy as Code, yaitu penerapan kebijakan dalam bentuk kode deklaratif yang dapat diuji, diaudit, dan diotomatisasi. Pendekatan ini berperan penting dalam meningkatkan kepatuhan serta mengurangi risiko kesalahan manual \cite{torstensson2021policyascode}. Beberapa implementasi yang banyak digunakan di lingkungan Kubernetes adalah Open Policy Agent (OPA) \cite{opa2022docs} dan Kyverno \cite{kyverno2023docs}. HashiCorp juga menekankan bahwa Policy as Code merupakan kelanjutan logis dari Infrastructure as Code, yang mendukung konsistensi tata kelola di lingkungan cloud-native \cite{hashicorp2020policyascode}.
+
 \section{Kerangka Pemikiran}
+
+Pertumbuhan jumlah \emph{cluster} OpenShift di lingkungan BRI menimbulkan tantangan dalam hal konsistensi konfigurasi, keamanan, dan efisiensi operasional \cite{burns2021kubernetes}. Tanpa mekanisme pengendalian terpusat, risiko inkonsistensi dan pelanggaran kebijakan semakin meningkat.
+
+Red Hat Advanced Cluster Management (ACM) dapat digunakan sebagai solusi untuk memusatkan pengelolaan \emph{multi-cluster} melalui fitur \emph{governance} dan \emph{policy management} \cite{redhat2023acm}. Pendekatan Policy as Code mendukung proses ini dengan menyediakan kebijakan dalam bentuk kode yang dapat diuji, diaudit, dan dijalankan otomatis \cite{torstensson2021policyascode}.
+
+Dengan demikian, penelitian ini diarahkan untuk mengevaluasi tantangan yang ada, menerapkan \emph{automated policy enforcement} melalui ACM, serta menyusun contoh \emph{Policy as Code} sesuai kebutuhan Divisi Security Governance BRI.
+
+\begin{tikzpicture}[node distance=2cm]
+  \node (cluster) [startstop] {\emph{Cluster} OpenShift};
+  \node (tantangan) [io, below of=cluster] {Tantangan Multi-Cluster OpenShift (inkonsistensi, keamanan, efisiensi)};
+  %   \node (kebutuhan) [io, below of=tantangan] {Kebutuhan Mekanisme Terpusat};
+  %   \node (acm) [io, below of=kebutuhan] {Red Hat ACM (Governance & Policy)};
+  %   \node (policy) [io, below of=acm] {Policy as Code (Automasi Kebijakan)};
+  %   \node (hasil) [io, below of=policy] {Peningkatan Konsistensi, Efisiensi, dan Kepatuhan};
+\end{tikzpicture}
+
 \section{Hipotesis}

@@ -1,17 +1,99 @@
 \chapter{Pendahuluan}
+
 \section{Latar Belakang}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Sebagai bagian dari strategi transformasi digital \emph{BRIvolution 3.0}—khususnya dalam pilar Perbaikan Tata Kelola (\emph{Good Corporate Governance/GCG})—Bank BRI berkomitmen untuk memperkuat fondasi tata kelola teknologi informasi yang berkelanjutan dan andal. Tata kelola TI sendiri dipandang penting karena berfungsi memastikan pemanfaatan TI dapat mendukung pencapaian tujuan organisasi, sekaligus mengelola risiko serta penggunaan sumber daya secara optimal \cite{isaca2012cobit5}, \cite{catersteel2005itgov}.
+
+Transformasi digital BRI ditandai dengan adopsi Red Hat OpenShift sebagai \emph{platform} utama untuk aplikasi \emph{critical} seperti BRImo dan Q’LoLa. OpenShift, yang dibangun di atas Kubernetes, terbukti mendukung orkestrasi aplikasi berskala besar secara aman dan efisien \cite{redhat2022openshift}, \cite{burns2021kubernetes}. Saat ini, terdapat lebih dari 17 \emph{cluster} yang tersebar di 3 \emph{data center}. Pertumbuhan ini tidak hanya mencerminkan peningkatan kapabilitas digital, tetapi juga menghadirkan tantangan kompleks dalam konsistensi tata kelola dan efisiensi operasional.
+
+Tanpa mekanisme pengendalian terpusat, risiko inkonsistensi konfigurasi, pelanggaran keamanan, dan ketidakefisienan operasional dapat mengganggu stabilitas layanan. Hal ini menegaskan perlunya solusi manajemen lintas \emph{cluster}. Red Hat Advanced Cluster Management (ACM) hadir sebagai jawaban karena mendukung \emph{governance} dan \emph{policy enforcement} pada skala \emph{multi-cluster} \cite{redhat2023acm}.
+
+Selain itu, pendekatan \emph{Policy as Code} memungkinkan penerapan kebijakan keamanan dalam bentuk kode deklaratif yang dapat diaudit, diuji, serta diintegrasikan ke dalam proses \emph{CI/CD} \cite{torstensson2021policyascode}. Konsep ini diakui dapat meningkatkan kepatuhan serta mengurangi risiko kesalahan manual dalam operasional \emph{cloud-native} \cite{opa2022docs}, \cite{kyverno2023docs}. Dengan demikian, penerapan ACM dan \emph{Policy as Code} dapat memperkuat konsistensi tata kelola TI serta mendukung visi BRI sebagai \emph{The Most Trusted Lifetime Financial Partner for Sustainable Growth} pada tahun 2029.
+
 \section{Identifikasi Masalah}
-Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
 
-Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+\subsection{Inkonsistensi Tata Kelola Konfigurasi}
+\begin{adjustwidth}{0.5cm}{0cm}
+  \begin{enumerate}[a.]
+    \item Setiap \emph{cluster} OpenShift saat ini dikelola secara terpisah, sehingga konfigurasi dan standar keamanan tidak selalu seragam.
+    \item Potensi munculnya deviasi konfigurasi (\emph{configuration drift}) dapat mengakibatkan perbedaan kualitas layanan antar \emph{cluster}.
+  \end{enumerate}
+\end{adjustwidth}
 
-Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+\subsection{Tantangan dalam Kepatuhan Regulasi dan Kebijakan Internal}
+\begin{adjustwidth}{0.5cm}{0cm}
+  \begin{enumerate}[a.]
+    \item Proses penerapan kebijakan keamanan belum sepenuhnya terotomatisasi.
+    \item Audit dan \emph{compliance checking} masih membutuhkan \emph{effort} manual yang tinggi, berisiko menimbulkan keterlambatan dalam mendeteksi pelanggaran.
+  \end{enumerate}
+\end{adjustwidth}
 
-Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+\subsection{Kerumitan Operasional \emph{Multi-Cluster}}
+\begin{adjustwidth}{0.5cm}{0cm}
+  \begin{enumerate}[a.]
+    \item Dengan lebih dari 17 \emph{cluster} di 3 \emph{data center}, pengelolaan manual menjadi tidak efisien dan rawan kesalahan.
+    \item Monitoring dan kontrol yang tersebar menyebabkan sulitnya mendapatkan visibilitas menyeluruh terhadap kondisi \emph{cluster}.
+  \end{enumerate}
+\end{adjustwidth}
 
-Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+\subsection{Resiko Keamanan dan Stabilitas Layanan}
+\begin{adjustwidth}{0.5cm}{0cm}
+  \begin{enumerate}[a.]
+    \item Tanpa mekanisme pengendalian yang terpusat, terdapat potensi pelanggaran keamanan akibat kebijakan yang tidak konsisten.
+    \item Ketidakteraturan dalam \emph{patching}, hardening, atau konfigurasi dapat berdampak pada stabilitas layanan kritikal seperti BRImo dan Q’LoLa.
+  \end{enumerate}
+\end{adjustwidth}
+
+\subsection{Keterbatasan Mekanisme Otomatisasi}
+\begin{adjustwidth}{0.5cm}{0cm}
+  \begin{enumerate}[a.]
+    \item Belum adanya \emph{integrated framework} untuk \emph{automated policy enforcement} membuat proses remediasi lambat.
+    \item Efisiensi operasional menurun karena banyaknya intervensi manual yang diperlukan.
+  \end{enumerate}
+\end{adjustwidth}
+
 \section{Batasan Penelitian}
+
+\begin{adjustwidth}{0.5cm}{0cm}
+  \begin{enumerate}[a.]
+    \item Penelitian ini hanya difokuskan pada \emph{cluster} OpenShift yang digunakan di lingkungan BRI \emph{development environment}.
+    \item Fokus penelitian terbatas pada aspek \emph{governance} dan \emph{policy enforcement} terkait konfigurasi, keamanan, dan kepatuhan di lingkungan pengembangan.
+    \item Evaluasi atau perbandingan dengan produk serupa dari vendor lain berada di luar lingkup penelitian.
+    \item Hasil penelitian difokuskan pada identifikasi kebutuhan, tantangan, dan potensi implementasi mekanisme \emph{centralize policy enforcement}.
+    \item Rekomendasi yang dihasilkan belum sampai pada tahap implementasi penuh di production, melainkan terbatas pada simulasi, \emph{proof-of-concept}, atau desain arsitektural untuk \emph{environment development}.
+    \item Fokus tetap pada dimensi teknis tata kelola cluster dan keamanan sistem di \emph{environment development}.
+  \end{enumerate}
+\end{adjustwidth}
+
 \section{Rumusan Masalah}
+
+\begin{adjustwidth}{0.5cm}{0cm}
+  \begin{enumerate}[a.]
+    \item Bagaimana memastikan konsistensi konfigurasi dan penerapan kebijakan keamanan pada \emph{multi-cluster OpenShift} di lingkungan \emph{development} BRI?
+    \item Bagaimana peran Red Hat Advanced Cluster Management (ACM) dalam membantu tata kelola terpusat (\emph{centralized governance}) untuk \emph{environment development}?
+    \item Sejauh mana penerapan \emph{automated policy enforcement} melalui ACM dapat meningkatkan kepatuhan, keamanan, dan efisiensi operasional pada cluster OpenShift di \emph{environment development}?
+    \item Bagaimana merancang solusi tata kelola berbasis ACM yang efektif untuk mendukung kebutuhan pengelolaan \emph{multi-cluster} OpenShift di \emph{development environment} BRI?
+  \end{enumerate}
+\end{adjustwidth}
+
 \section{Tujuan Penelitian}
+
+\begin{adjustwidth}{0.5cm}{0cm}
+  \begin{enumerate}[a.]
+    \item Menganalisis kebutuhan konsistensi konfigurasi dan penerapan kebijakan keamanan pada \emph{multi-cluster} OpenShift di \emph{development environment} BRI.
+    \item Mengevaluasi peran Red Hat Advanced Cluster Management (ACM) dalam mendukung tata kelola terpusat (\emph{centralized governance}) untuk pengelolaan \emph{cluster} di environment development.
+    \item Menyajikan hasil analisis secara kualitatif berupa saran perbaikan serta diagram rancangan \emph{automated policy} yang dapat diterapkan melalui ACM untuk meningkatkan kepatuhan, keamanan, dan efisiensi operasional \emph{cluster} OpenShift.
+    \item Merancang solusi tata kelola berbasis ACM yang sesuai untuk pengelolaan \emph{multi-cluster} OpenShift di \emph{development environment} BRI.
+    \item Menyusun dan mengimplementasikan \emph{policy} pada ACM yang selaras dengan spesifikasi dan standar keamanan yang ditetapkan oleh Divisi Security Governance BRI.
+  \end{enumerate}
+\end{adjustwidth}
+
 \section{Manfaat Penelitian}
+
+\begin{adjustwidth}{0.5cm}{0cm}
+  \begin{enumerate}[a.]
+    \item Bagi Bank BRI, penelitian ini mendukung peningkatan tata kelola teknologi informasi melalui pengendalian kebijakan yang lebih terpusat, sehingga mengurangi risiko operasional dan keamanan yang dapat memengaruhi reputasi serta keberlangsungan layanan digital.
+    \item Bagi Divisi IT BRI, penelitian ini memberikan referensi solusi tata kelola \emph{multi-cluster} OpenShift berbasis Red Hat Advanced Cluster Management (ACM), sekaligus membantu penyusunan dan penerapan \emph{automated policy} yang selaras dengan standar Divisi Security Governance BRI untuk meningkatkan efisiensi operasional dan kepatuhan.
+    \item Bagi Nasabah BRI, penelitian ini berkontribusi pada peningkatan keamanan, keandalan, dan stabilitas layanan digital, sehingga nasabah dapat menikmati pengalaman perbankan yang lebih aman, lancar, dan terpercaya.
+  \end{enumerate}
+\end{adjustwidth}
